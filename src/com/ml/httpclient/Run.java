@@ -4,19 +4,41 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public class Run {
-	public static void main(String[] args) {
+	// public static void main(String[] args) {
+	// listRun();
+	//
+	// // System.out.println("shemeString==" + schemeString + "\n"
+	// // + "methodString==" + methodString + "\n" + "hostString=="
+	// // + hostString + "\n" + "pathString==" + pathString);
+	// }
+
+	public static void listRun(String url) {
+		System.out.println("listRun的配置是;" + url);
+		String[] cof = url.split(",,");
 		// 协议类型（http,tcp，udp）
-		String schemeString = "http";
+		String schemeString = null;
 		// 协议方法(get,post)
 		// String methodString = "GET";
-		String methodString = "POST";
+		String methodString = null;
 		// 协议域名
-		String hostString = "testapi.51anlv.com";
+		String hostString = null;
 		// 协议path
-		String pathString = "/webservice/postbuy.php";
+		String pathString = null;
 		// 协议参数
 		// String paramString = "m=misc&f=ping&t=html";
-		String paramString = "{\"user\":\"bjkanghui\",\"password\":\"bjkhpassword\",\"userid\":\"bjkhapi\",\"action\":\"getProducts\"}";
+		String paramString = null;
+
+		if (cof.length != 5) {
+			System.out.print("现有参数项为：" + cof.length);
+			return;
+		} else {
+			schemeString = cof[0];
+			methodString = cof[1];
+			hostString = cof[2];
+			pathString = cof[3];
+			paramString = cof[4];
+			System.out.println("协议参数为：" + paramString);
+		}
 
 		String uriString = "";
 
@@ -40,10 +62,6 @@ public class Run {
 			System.out.println("uriString=====" + uriString);
 			beginHttp(methodString, uriString, paramString);
 		}
-
-		// System.out.println("shemeString==" + schemeString + "\n"
-		// + "methodString==" + methodString + "\n" + "hostString=="
-		// + hostString + "\n" + "pathString==" + pathString);
 	}
 
 	// 准备调用协议

@@ -43,10 +43,9 @@ public class httpPost {
 			// mapStrings[1].toString());
 			//
 			// }
-
 			JSONObject jsonParam = JSONObject.fromObject(paramString);
-			System.out.println("获取json格式user的值 ================"
-					+ jsonParam.get("user"));
+			// System.out.println("获取json格式user的值 ================"
+			// + jsonParam.get("user"));
 			post = new HttpPost(uriString.toString());
 			StringEntity entity = new StringEntity(jsonParam.toString());
 			entity.setContentEncoding("UTF-8");
