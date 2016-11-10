@@ -12,14 +12,25 @@ import org.apache.http.util.EntityUtils;
 
 public class httpGet {
 
-	public static void testHttpGet(String uri) throws IOException {
+	public static void testHttpGet(String uri, String paramString)
+			throws IOException {
 		// TODO Auto-generated method stub
 		int code;
 		CloseableHttpClient client = HttpClients.createDefault();
-
-		// 发送请求，返回结果并分析
-		HttpGet get = new HttpGet(uri.toString());
 		CloseableHttpResponse response = null;
+		HttpGet get = null;
+
+		if (paramString == null || paramString.length() == 0) {
+
+			get = new HttpGet(uri.toString());
+
+		} else {
+			uri = uri + "?" + paramString;
+			System.out.println("带参数的uri=====" + uri);
+			get = new HttpGet(uri.toString());
+		}
+		// 发送请求，返回结果并分析
+
 		try {
 			response = client.execute(get);
 			// 打印回包状态码
